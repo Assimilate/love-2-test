@@ -3,10 +3,10 @@ type Name = string | null | undefined;
 
 export const Greet = (value: Name[] | Name): string => {
     const names = createNamesArray(value);
-    let greetingMessage: string;
+    let greeting: string;
 
-    greetingMessage = getGreeting(names);
-    return `${greetingMessage}`;
+    greeting = getGreeting(names);
+    return `${greeting}`;
 }
 
 export const createNamesArray = (value: Name | Name[]): Name[] => {
@@ -60,10 +60,6 @@ export const isName = (name: Name | Name[]): name is Name => {
     return typeof(name) === "string" || name === null || typeof(name) === 'undefined';
 }
 
-export const isNames = (name: Name | Name[]): name is Name[] => {
-    return Array.isArray(name) && !name.some(name => !isName(name));
-}
-
 export const getAllNamesConcatenated = (names: Name[]): string => {
     const lastIndex = names.length - 1;
     const secondToLastIndex = names.length - 2;
@@ -88,10 +84,6 @@ export const getAllNamesConcatenated = (names: Name[]): string => {
 
 export const hasTwoNames = (names: Name[]): boolean => {
     return names.length === 2 && names.every(name => isName(name));
-}
-
-export const hasOneName = (names: Name[]): boolean => {
-    return names.length === 1 && names.every(name => isName(name));
 }
 
 export const getGreeting = (names: Name[]): string => {
@@ -119,7 +111,3 @@ export const isUpperCaseName = (name: Name): boolean => {
     return name === name.toUpperCase();
 }
 
-export const hasUpperCaseName = (names: Name[]): boolean => {
-    if(!names || !isNames(names)) return false;
-    return names.some(name => isUpperCaseName(name));
-}

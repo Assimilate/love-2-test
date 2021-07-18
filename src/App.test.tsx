@@ -132,25 +132,6 @@ describe('Function isName', () => {
   }) 
 })
 
-describe('Function isNames', () => {
-  it('should return true if passed an argument of type array of strings', () => {
-    const names: Name[] = ['Daniel', 'Sandra'];
-    expect(isNames(names)).toBe(true);
-  })
-  it('should return false if passed an argument of type array of numbers', () => {
-    const names: any = [1, 2];
-    expect(isNames(names)).toBe(false);
-  })
-  it('should return true if passed an argument of type array where all values are of type Name', () => {
-    const names: Name[] = ['Daniel', undefined, null];
-    expect(isNames(names)).toBe(true);
-  })
-  it('should return false if passed an argument of type array where one value is not of type Name', () => {
-    const names: any = ['Daniel', undefined, null, 4];
-    expect(isNames(names)).toBe(false);
-  })
-})
-
 describe('Function isUpperCase', () => {
   it('should return false when given a value that is a string and that is not uppercase', () => {
     const name: Name = 'Daniel';
@@ -170,32 +151,4 @@ describe('Function isUpperCase', () => {
     const name2: any = {};
     expect(isUpperCaseName(name2)).toBe(false);
   })
-})
-
-describe('Function hasUpperCaseName', () => {
-  it('should return false if passed argument array does not contain an uppercase name', () => {
-    const name1: Name = 'Daniel';
-    const name2: Name = 'Sandra';
-    const names: Name[] = [name1, name2];
-    expect(hasUpperCaseName(names)).toBe(false);
-  })
-  it('should return true if all names in the passed array are uppercase strings', () => {
-    const name1: Name = 'DANIEL';
-    const name2: Name = 'SANDRA';
-    const names: Name[] = [name1, name2];
-    expect(hasUpperCaseName(names)).toBe(true);
-  })
-  it('should return true if only one name in the passed array is an uppercase strings', () => {
-    const name1: Name = 'DANIEL';
-    const name2: Name = 'Sandra';
-    const names: Name[] = [name1, name2];
-    expect(hasUpperCaseName(names)).toBe(true);
-  })
-  it('should return false if the passed in argument is not an array of strings only', () => {
-    const name1: Name = null;
-    const name2: Name = 'Sandra';
-    const names: Name[] = [name1, name2];
-    expect(hasUpperCaseName(names)).toBe(false);
-  })
-
 })
